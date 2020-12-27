@@ -1,28 +1,10 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            price:999,
-            title:'phone',
-            qty:1,
-            img:''
-        }
-    }
-    increaseQuantity = ()=>{
-        const qty = this.state.qty;
-        this.setState({qty:qty+1});
-    }
-    decreaseQuantity = ()=>{
-        const qty = this.state.qty;
-        this.setState({qty:qty >0?qty-1:0});
-    }
-    deleteItem = ()=>{
-        console.log('delete');
-    }
+
     render() { 
-        const { price ,title, qty} = this.state;
+        const { price ,title, qty} = this.props.product;
+        
         return (  
             <div className = "cart-item">
                 <div className = "left-block">
@@ -38,19 +20,19 @@ class CartItem extends React.Component {
                       alt = "increase"
                       className = "action-icons" 
                       src = "https://as2.ftcdn.net/jpg/00/70/16/29/500_F_70162903_5mFpUbO3ZfRyD4gslH8j2c5VxjGMKU9G.jpg"
-                      onClick = {this.increaseQuantity} 
+                      onClick = {() =>{this.props.onIncrement(this.props.product)}} 
                        />
                     <img
                      alt = "decrease" 
                      className = "action-icons" 
                      src = "https://www.flaticon.com/svg/static/icons/svg/1828/1828899.svg" 
-                     onClick = {this.decreaseQuantity} 
+                     onClick = {() => this.props.onDecrement(this.props.product)} 
                      />
                     <img 
                     alt = "delete" 
                     className = "action-icons" 
                     src = "https://as2.ftcdn.net/jpg/00/98/26/11/500_F_98261175_Sv69O3rZsHApYkjAdrWbgQixYHwyZyOr.jpg" 
-                    onClick = {this.deleteItem}
+                    onClick = {() => this.props.onDelete(this.props.product)}
                    />
                     </div>
                 </div>

@@ -1,9 +1,10 @@
 import './App.css';
-import  CartItem from './components/cartitem';
+import  Cart from './components/cart';
 function App() {
   return (
     <div  className = "App"><h1>cart</h1>
-    <CartItem />
+    <Cart />
+
     </div>
   );
 }
