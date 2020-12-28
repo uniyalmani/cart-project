@@ -50,12 +50,15 @@ class App extends React.Component {
         products[index].qty = products[index].qty - 1;
         this.setState({products:products})
     }
-    handleDeleteItem = (product)=>{
-
-        const products = this.state.products;
-        const index = products.indexOf(product);
-        const prod = products.filter((ele,idx)=> idx != this.index )
-        this.setState({products:prod})
+    handleDeleteItem = (product) => {
+      const { products } = this.state;
+      const id = product.id;
+      console.log(id)
+      const items = products.filter((item) => item.id !== id); // [{}]
+  
+      this.setState({
+        products: items
+      })
     }
     getCartCount = ()=>{
       const {products } = this.state;
