@@ -1,23 +1,44 @@
 import React, { Component } from 'react';
-class NavBar extends Component {
-    render() { 
-        return (  
-        <div>   
-            <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img style= {style.image} src = "https://as2.ftcdn.net/jpg/01/63/42/79/500_F_163427943_W56xtj7YydS4YujdUqQot94IINtt91FV.jpg"/> Cart</a>
+
+const NavBar = (props) => {
+        return (
+            
+            <div style={styles.nav}>
+              <div style={styles.cartIconContainer}>
+                <img style={styles.cartIcon} src="https://image.flaticon.com/icons/svg/2121/2121815.svg" alt="cart-icon" />
+                <span style={styles.cartCount}> {props.count}
+                </span>
+              </div>
             </div>
-            </nav>
-        </div>
-        );
-    }
-}
-const style = {
-    image:{
-        height:50,
-        width:50,
-        borderRadius:4,
-      }
-}
+          );
+        }
+
+        
+        const styles = {
+          cartIcon: {
+            height: 40,
+            marginRight: 20
+          },
+          nav: {
+            height: 70,
+            background: '#4267b2',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center'
+          },
+          cartIconContainer: {
+            position: 'relative'
+          },
+          cartCount: {
+            background: 'yellow',
+            borderRadius: '50%',
+            padding: '4px 8px',
+            position: 'absolute',
+            right: 0,
+            top: -9
+          }
+        };
+        
+
  
 export default NavBar;
