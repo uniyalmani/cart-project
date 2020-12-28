@@ -12,21 +12,21 @@ class App extends React.Component {
             price: 99,
             title: 'Watch',
             qty: 1,
-            img: '',
+            img: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
             id: 1
           },
           {
             price: 999,
             title: 'Mobile Phone',
             qty: 10,
-            img: '',
+            img: 'https://images.unsplash.com/photo-1520923642038-b4259acecbd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1306&q=80',
             id: 2
           },
           {
             price: 999,
             title: 'Laptop',
             qty: 4,
-            img: '',
+            img: 'https://images.unsplash.com/photo-1504707748692-419802cf939d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80',
             id: 3
           }
         ]
@@ -62,11 +62,16 @@ class App extends React.Component {
       let count = 0;
       products.forEach((product) =>{
         count += product.qty
-      }
-      
-      )
-    
+      })
       return count
+    }
+    getCartTotal = ()=>{
+      const {products } = this.state;
+      let cartTotal = 0;
+      products.map((product) =>{
+        cartTotal = cartTotal + product.qty*product.price
+      })
+      return cartTotal;
     }
    
     render(){
@@ -80,7 +85,12 @@ class App extends React.Component {
           onIncrement = {this.handleIncreaseQuantity}
           onDecrement = {this.handleDecreaseQuantity}
           onDelete = {this.handleDeleteItem} />
-
+  <nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <div class="btn btn-outline-success" > Total {this.getCartTotal()}</div>
+    <button class="btn btn-outline-secondary m-2" type="button">Order Now</button>
+  </form>
+</nav>
         </div>
       );
     }
